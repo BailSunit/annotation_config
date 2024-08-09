@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="course" class="com.neu.sunit.configuration.dto.Course" autowire="byName">
+        <qualifier value="course"/>
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="course_name" value="Java"/>
+        <constructor-arg name="course_fees" value="500.0"/>
+        <constructor-arg name="course_duration" value="4.6"/>
+    </bean>
+
+    <bean id="courseService" class="com.neu.sunit.configuration.service.CourseService">
+        <property name="course" ref="course"/>
+    </bean>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.neu.sunit.configuration"/>
+
+</beans>
